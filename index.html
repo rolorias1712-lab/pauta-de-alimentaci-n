@@ -15,14 +15,6 @@
   --c-bg: #FFE0DA; --c-fg: #8A2A1B; --c-s: #E5533D;
   --hf: 'Space Grotesk', system-ui, sans-serif; --bf: 'Inter', system-ui, sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14171C; --surface: #1C2027; --fg: #E8ECF2; --mut: #9AA5B4; --line: #2C323C;
-    --d-bg: #3A2C08; --d-fg: #FFD26A; --k-bg: #12301A; --k-fg: #8FE0A4;
-    --a-bg: #12284A; --a-fg: #9CC5FF; --o-bg: #2A1F4A; --o-fg: #C7B0FF;
-    --c-bg: #3D1A14; --c-fg: #FFA899; color-scheme: dark;
-  }
-}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--bf); margin: 0; padding: 16px; }
@@ -94,7 +86,7 @@ nav a:hover { border-color: var(--a-s); }
   <h2>Acceso Privado</h2>
   <p style="color:var(--mut); font-size:14px; margin-top:8px;">Ingresa tu contraseña para ver la pauta.</p>
   <input type="password" id="pass-input" placeholder="Contraseña">
-  <button onclick="checkPassword()">Ingresar</button>
+  <button id="btn-login" type="button">Ingresar</button>
   <p id="error-msg" style="color:var(--c-s); font-size:13px; margin-top:10px; display:none;">Contraseña incorrecta</p>
 </div>
 
@@ -177,7 +169,7 @@ nav a:hover { border-color: var(--a-s); }
 </div>
 
 <script>
-const CLAVE_SECRETA = "RiaS#2601; // Puedes cambiar la contraseña aquí
+const CLAVE_SECRETA = "RiaS#2601"; // Contraseña de acceso
 
 function checkPassword() {
   const val = document.getElementById('pass-input').value;
@@ -189,6 +181,12 @@ function checkPassword() {
     document.getElementById('error-msg').style.display = 'block';
   }
 }
+
+// Conectar el botón y la tecla Enter con la función de acceso
+document.getElementById('btn-login').addEventListener('click', checkPassword);
+document.getElementById('pass-input').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
 
 if(sessionStorage.getItem('auth_pauta') === 'true') {
   document.getElementById('auth-screen').classList.add('hidden');
