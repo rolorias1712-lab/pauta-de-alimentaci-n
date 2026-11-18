@@ -71,8 +71,7 @@ h1, h2, h3 { font-family: var(--hf); margin: 0; }
 </div>
 
 <script>
-// Cambia aquí la contraseña que deseas utilizar
-const CLAVE_SECRETA = "1234";
+const CLAVE_SECRETA = "RiaS2601"; // Puedes cambiar "1234" por tu contraseña deseada
 
 function checkPassword() {
   const val = document.getElementById('pass-input').value;
@@ -85,13 +84,11 @@ function checkPassword() {
   }
 }
 
-// Mantener sesión activa si ya puso la clave
 if(sessionStorage.getItem('auth_pauta') === 'true') {
   document.getElementById('auth-screen').classList.add('hidden');
   document.getElementById('main-app').classList.remove('hidden');
 }
 
-// Generación de los 30 días con autoguardado
 const K = 'pauta30-progress';
 let saved = JSON.parse(localStorage.getItem(K) || '{}');
 
@@ -118,4 +115,3 @@ for(let i=1; i<=30; i++) {
 </script>
 </body>
 </html>
-
