@@ -15,99 +15,83 @@
   --c-bg: #FFE0DA; --c-fg: #8A2A1B; --c-s: #E5533D;
   --hf: 'Space Grotesk', system-ui, sans-serif; --bf: 'Inter', system-ui, sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14171C; --surface: #1C2027; --fg: #E8ECF2; --mut: #9AA5B4; --line: #2C323C;
-    --d-bg: #3A2C08; --d-fg: #FFD26A; --k-bg: #12301A; --k-fg: #8FE0A4;
-    --a-bg: #12284A; --a-fg: #9CC5FF; --o-bg: #2A1F4A; --o-fg: #C7B0FF;
-    --c-bg: #3D1A14; --c-fg: #FFA899; color-scheme: dark;
-  }
-}
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--bf); margin: 0; padding: 16px; }
 .wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; padding-block: 20px; }
-h1, h2, h3, h4 { font-family: var(--hf); margin: 0; }
-h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.05; letter-spacing: -.02em; }
-h2 { font-size: 26px; margin-bottom: 4px; }
+h1, h2, h3 { font-family: var(--hf); margin: 0; }
 .hero { background: linear-gradient(135deg, var(--d-bg), var(--k-bg) 28%, var(--a-bg) 52%, var(--o-bg) 76%, var(--c-bg)); border-radius: 18px; padding: 28px 24px; }
-.hero .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; opacity: .8; margin-bottom: 8px; }
-.hero .lead { max-width: 62ch; opacity: .8; margin: 12px 0 18px; font-size: 16px; }
-nav { display: flex; flex-wrap: wrap; gap: 8px; }
-nav a { background: var(--surface); color: var(--fg); text-decoration: none; padding: 7px 14px; border-radius: 999px; font-weight: 500; font-size: 14px; border: 1px solid var(--line); }
-nav a:hover { border-color: var(--a-s); }
-.portions { display: grid; gap: 8px; }
-.meal { display: grid; grid-template-columns: 104px minmax(0, 1fr); border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
-.ml { padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; font-weight: 600; font-size: 14px; }
-.ml small { font-weight: 500; opacity: .8; font-size: 12px; }
-.mb { padding: 10px 12px; min-width: 0; }
-.mn { font-weight: 600; font-size: 14px; }
-.md { font-size: 13px; margin-top: 2px; opacity: .9; }
-.meal.d { background: var(--d-bg); color: var(--d-fg); } .meal.d .ml { background: var(--d-s); color: #2b1a00; }
-.meal.k { background: var(--k-bg); color: var(--k-fg); } .meal.k .ml { background: var(--k-s); color: #05220e; }
-.meal.a { background: var(--a-bg); color: var(--a-fg); } .meal.a .ml { background: var(--a-s); color: #fff; }
-.meal.o { background: var(--o-bg); color: var(--o-fg); } .meal.o .ml { background: var(--o-s); color: #fff; }
-.meal.c { background: var(--c-bg); color: var(--c-fg); } .meal.c .ml { background: var(--c-s); color: #fff; }
-.eqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-.eq { border-radius: 10px; padding: 12px 14px; display: flex; flexDirection: column; gap: 4px; font-size: 14px; }
-.eq.d { background: var(--d-bg); color: var(--d-fg); } .eq.k { background: var(--k-bg); color: var(--k-fg); }
-.eq.a { background: var(--a-bg); color: var(--a-fg); } .eq.o { background: var(--o-bg); color: var(--o-fg); }
-.eq.c { background: var(--c-bg); color: var(--c-fg); }
-.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 14px; }
+.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 14px; margin-bottom: 24px; }
 .day { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
 .day header { display: flex; justify-content: space-between; align-items: center; padding: 2px 2px 6px; }
-.day h3 { margin: 0; font-size: 20px; }
+.day h3 { font-size: 20px; }
 .chk { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--mut); cursor: pointer; }
 .chk input { width: 18px; height: 18px; accent-color: var(--k-s); }
-.day.done { opacity: .6; }
-.day.done h3 { text-decoration: line-through; }
-.code { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 6px; background: var(--surface); color: var(--fg); text-decoration: none; border: 1px solid var(--line); }
-.shop { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px; }
-.sh { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
-.sh span { color: var(--mut); }
-.tips { padding-left: 20px; max-width: 70ch; } .tips li { margin: 6px 0; }
-.foot { color: var(--mut); font-size: 13px; margin-top: 20px; }
+.day.done { opacity: .6; } .day.done h3 { text-decoration: line-through; }
+.meal { display: grid; grid-template-columns: 90px minmax(0, 1fr); border-radius: 8px; overflow: hidden; margin-bottom: 4px; font-size: 13px; }
+.ml { padding: 6px 8px; font-weight: 600; display: flex; align-items: center; }
+.mb { padding: 6px 8px; }
+.meal.d { background: var(--d-bg); color: var(--d-fg); } .meal.d .ml { background: var(--d-s); color: #2b1a00; }
+.meal.a { background: var(--a-bg); color: var(--a-fg); } .meal.a .ml { background: var(--a-s); color: #fff; }
+.meal.c { background: var(--c-bg); color: var(--c-fg); } .meal.c .ml { background: var(--c-s); color: #fff; }
+#auth-screen { max-width: 400px; margin: 100px auto; background: var(--surface); padding: 30px; border-radius: 16px; border: 1px solid var(--line); text-align: center; }
+#auth-screen input { width: 100%; padding: 10px; margin: 15px 0; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; }
+#auth-screen button { background: var(--a-s); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; }
+.hidden { display: none !important; }
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<!-- Pantalla de Bloqueo por Clave -->
+<div id="auth-screen">
+  <h2>Acceso Privado</h2>
+  <p style="color:var(--mut); font-size:14px; margin-top:8px;">Ingresa tu contraseña para ver la pauta de 30 días.</p>
+  <input type="password" id="pass-input" placeholder="Contraseña">
+  <button onclick="checkPassword()">Ingresar</button>
+  <p id="error-msg" style="color:var(--c-s); font-size:13px; margin-top:10px; display:none;">Contraseña incorrecta</p>
+</div>
+
+<!-- Contenido Principal de los 30 Días -->
+<div id="main-app" class="wrap hidden">
 <header class="hero">
-  <p class="eyebrow">Plan personal · 30 días</p>
+  <p style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; opacity:.8; margin-bottom:8px;">Plan personal · 30 días</p>
   <h1>Pauta de alimentación</h1>
-  <p class="lead">Cinco comidas al día con las porciones de tu guía: 3 de proteína en el almuerzo y 2 en la cena.</p>
-  <nav><a href="#porciones">Porciones</a><a href="#q1">Días 1–10</a><a href="#q11">Días 11–20</a><a href="#q21">Días 21–30</a><a href="#compras">Compras</a></nav>
+  <p style="opacity:.8; margin:12px 0 0;">Cinco comidas al día con las porciones de tu guía.</p>
 </header>
 
-<section id="porciones">
-  <h2>Porciones diarias</h2>
-  <div class="portions">
-    <div class="meal d"><div class="ml"><span>Desayuno</span><small>7:00–9:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 2 proteínas + 1 lácteo descremado + 1 grasa</div></div></div>
-    <div class="meal k"><div class="ml"><span>Colación</span><small>10:30–12:00</small></div><div class="mb"><div class="mn">1 fruta</div></div></div>
-    <div class="meal a"><div class="ml"><span>Almuerzo</span><small>13:00–14:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 3 proteínas + 1 grasa + verduras libres</div></div></div>
-    <div class="meal o"><div class="ml"><span>Once</span><small>17:00–18:00</small></div><div class="mb"><div class="mn">1 lácteo descremado + 1 fruta + 1 carbohidrato</div></div></div>
-    <div class="meal c"><div class="ml"><span>Cena</span><small>19:00–20:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 2 proteínas + 1 grasa + verduras libres</div></div></div>
-  </div>
-</section>
-
-<section id="q1">
-  <h2>Menú días 1 a 10</h2>
-  <div class="days" id="days-box-1"></div>
-</section>
-
-<section id="compras">
-  <h2>Lista de compras semanal</h2>
-  <div class="shop">
-    <div class="sh"><b>Huevos</b><span>12 a 14 unidades</span></div>
-    <div class="sh"><b>Pollo y Pavo</b><span>800 a 900 g (crudos)</span></div>
-    <div class="sh"><b>Pescado</b><span>600 a 700 g (merluza, salmón, reineta)</span></div>
-    <div class="sh"><b>Atún al agua</b><span>2 latas</span></div>
-  </div>
+<section>
+  <h2>Días 1 a 10</h2>
+  <div class="days" id="box-1"></div>
+  
+  <h2>Días 11 a 20</h2>
+  <div class="days" id="box-2"></div>
+  
+  <h2>Días 21 a 30</h2>
+  <div class="days" id="box-3"></div>
 </section>
 </div>
 
 <script>
-// Generador dinámico de días y autoguardado en LocalStorage
-const q1 = document.getElementById('days-box-1');
+// Cambia aquí la contraseña que deseas utilizar
+const CLAVE_SECRETA = "1234";
+
+function checkPassword() {
+  const val = document.getElementById('pass-input').value;
+  if(val === CLAVE_SECRETA) {
+    document.getElementById('auth-screen').classList.add('hidden');
+    document.getElementById('main-app').classList.remove('hidden');
+    sessionStorage.setItem('auth_pauta', 'true');
+  } else {
+    document.getElementById('error-msg').style.display = 'block';
+  }
+}
+
+// Mantener sesión activa si ya puso la clave
+if(sessionStorage.getItem('auth_pauta') === 'true') {
+  document.getElementById('auth-screen').classList.add('hidden');
+  document.getElementById('main-app').classList.remove('hidden');
+}
+
+// Generación de los 30 días con autoguardado
 const K = 'pauta30-progress';
 let saved = JSON.parse(localStorage.getItem(K) || '{}');
 
@@ -116,9 +100,9 @@ for(let i=1; i<=30; i++) {
   art.className = `day ${saved[i] ? 'done' : ''}`;
   art.innerHTML = `
     <header><h3>Día ${i}</h3><label class="chk"><input type="checkbox" ${saved[i]?'checked':''} data-d="${i}"><span>Cumplido</span></label></header>
-    <div class="meal d"><div class="ml"><span>Desayuno</span></div><div class="mb"><div class="mn">Plan equilibrado según porciones base</div></div></div>
-    <div class="meal a"><div class="ml"><span>Almuerzo</span></div><div class="mb"><div class="mn">Proteína, carbohidrato y verduras libres</div></div></div>
-    <div class="meal c"><div class="ml"><span>Cena</span></div><div class="mb"><div class="mn">Proteína magra, carbohidrato y ensalada</div></div></div>
+    <div class="meal d"><div class="ml"><span>Desayuno</span></div><div class="mb">1 carbohidrato + 2 proteínas + 1 lácteo + 1 grasa</div></div>
+    <div class="meal a"><div class="ml"><span>Almuerzo</span></div><div class="mb">1 carbohidrato + 3 proteínas + 1 grasa + verduras</div></div>
+    <div class="meal c"><div class="ml"><span>Cena</span></div><div class="mb">1 carbohidrato + 2 proteínas + 1 grasa + verduras</div></div>
   `;
   const chk = art.querySelector('input');
   chk.addEventListener('change', (e) => {
@@ -126,8 +110,12 @@ for(let i=1; i<=30; i++) {
     saved[i] = e.target.checked;
     localStorage.setItem(K, JSON.stringify(saved));
   });
-  if(i <= 10) q1.appendChild(art);
+
+  if(i <= 10) document.getElementById('box-1').appendChild(art);
+  else if(i <= 20) document.getElementById('box-2').appendChild(art);
+  else document.getElementById('box-3').appendChild(art);
 }
 </script>
 </body>
 </html>
+
