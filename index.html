@@ -15,24 +15,72 @@
   --c-bg: #FFE0DA; --c-fg: #8A2A1B; --c-s: #E5533D;
   --hf: 'Space Grotesk', system-ui, sans-serif; --bf: 'Inter', system-ui, sans-serif;
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171C; --surface: #1C2027; --fg: #E8ECF2; --mut: #9AA5B4; --line: #2C323C;
+    --d-bg: #3A2C08; --d-fg: #FFD26A; --k-bg: #12301A; --k-fg: #8FE0A4;
+    --a-bg: #12284A; --a-fg: #9CC5FF; --o-bg: #2A1F4A; --o-fg: #C7B0FF;
+    --c-bg: #3D1A14; --c-fg: #FFA899; color-scheme: dark;
+  }
+}
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--bf); margin: 0; padding: 16px; }
 .wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; padding-block: 20px; }
-h1, h2, h3 { font-family: var(--hf); margin: 0; }
+h1, h2, h3, h4 { font-family: var(--hf); margin: 0; }
+h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.05; letter-spacing: -.02em; }
+h2 { font-size: 26px; margin-bottom: 4px; }
 .hero { background: linear-gradient(135deg, var(--d-bg), var(--k-bg) 28%, var(--a-bg) 52%, var(--o-bg) 76%, var(--c-bg)); border-radius: 18px; padding: 28px 24px; }
+.hero .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; opacity: .8; margin-bottom: 8px; }
+.hero .lead { max-width: 62ch; opacity: .8; margin: 12px 0 18px; font-size: 16px; }
+.sub { color: var(--mut); margin: 0 0 16px; max-width: 70ch; }
+nav { display: flex; flex-wrap: wrap; gap: 8px; }
+nav a { background: var(--surface); color: var(--fg); text-decoration: none; padding: 7px 14px; border-radius: 999px; font-weight: 500; font-size: 14px; border: 1px solid var(--line); }
+nav a:hover { border-color: var(--a-s); }
+.portions { display: grid; gap: 8px; }
+.meal { display: grid; grid-template-columns: 104px minmax(0, 1fr); border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
+.ml { padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; font-weight: 600; font-size: 14px; }
+.ml small { font-weight: 500; opacity: .8; font-size: 12px; }
+.mb { padding: 10px 12px; min-width: 0; }
+.mn { font-weight: 600; font-size: 14px; }
+.md { font-size: 13px; margin-top: 2px; opacity: .9; }
+.meal.d { background: var(--d-bg); color: var(--d-fg); } .meal.d .ml { background: var(--d-s); color: #2b1a00; }
+.meal.k { background: var(--k-bg); color: var(--k-fg); } .meal.k .ml { background: var(--k-s); color: #05220e; }
+.meal.a { background: var(--a-bg); color: var(--a-fg); } .meal.a .ml { background: var(--a-s); color: #fff; }
+.meal.o { background: var(--o-bg); color: var(--o-fg); } .meal.o .ml { background: var(--o-s); color: #fff; }
+.meal.c { background: var(--c-bg); color: var(--c-fg); } .meal.c .ml { background: var(--c-s); color: #fff; }
+.eqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.eq { border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.eq b { font-family: var(--hf); }
+.eq.d { background: var(--d-bg); color: var(--d-fg); } .eq.k { background: var(--k-bg); color: var(--k-fg); }
+.eq.a { background: var(--a-bg); color: var(--a-fg); } .eq.o { background: var(--o-bg); color: var(--o-fg); }
+.eq.c { background: var(--c-bg); color: var(--c-fg); }
 .days { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 14px; margin-bottom: 24px; }
 .day { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
 .day header { display: flex; justify-content: space-between; align-items: center; padding: 2px 2px 6px; }
-.day h3 { font-size: 20px; }
+.day h3 { margin: 0; font-size: 20px; }
 .chk { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--mut); cursor: pointer; }
 .chk input { width: 18px; height: 18px; accent-color: var(--k-s); }
 .day.done { opacity: .6; } .day.done h3 { text-decoration: line-through; }
-.meal { display: grid; grid-template-columns: 90px minmax(0, 1fr); border-radius: 8px; overflow: hidden; margin-bottom: 4px; font-size: 13px; }
-.ml { padding: 6px 8px; font-weight: 600; display: flex; align-items: center; }
-.mb { padding: 6px 8px; }
-.meal.d { background: var(--d-bg); color: var(--d-fg); } .meal.d .ml { background: var(--d-s); color: #2b1a00; }
-.meal.a { background: var(--a-bg); color: var(--a-fg); } .meal.a .ml { background: var(--a-s); color: #fff; }
-.meal.c { background: var(--c-bg); color: var(--c-fg); } .meal.c .ml { background: var(--c-s); color: #fff; }
+.day .meal { grid-template-columns: 84px minmax(0, 1fr); }
+.code { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 6px; background: var(--surface); color: var(--fg); text-decoration: none; border: 1px solid var(--line); vertical-align: 1px; margin-left: 2px; }
+.pbase { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 8px; }
+.pbase p { margin: 6px 0 0; color: var(--mut); font-size: 14px; }
+.rg { padding: 6px 12px; border-radius: 8px; display: inline-block; }
+.rg.d { background: var(--d-bg); color: var(--d-fg); } .rg.o { background: var(--o-bg); color: var(--o-fg); }
+.rg.a { background: var(--a-bg); color: var(--a-fg); } .rg.c { background: var(--c-bg); color: var(--c-fg); }
+.recs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px; margin-top: 10px; }
+.rec { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; border-top-width: 4px; }
+.rec.d { border-top-color: var(--d-s); } .rec.o { border-top-color: var(--o-s); }
+.rec.a { border-top-color: var(--a-s); } .rec.c { border-top-color: var(--c-s); }
+.rec h4 { font-size: 16px; margin-bottom: 4px; }
+.rec p { margin: 6px 0; font-size: 14px; }
+.rec .por { color: var(--mut); font-size: 12.5px; font-weight: 500; }
+.shop { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px; }
+.sh { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+.sh span { color: var(--mut); }
+.tips { padding-left: 20px; max-width: 70ch; } .tips li { margin: 6px 0; }
+.foot { color: var(--mut); font-size: 13px; margin-top: 20px; }
 #auth-screen { max-width: 400px; margin: 100px auto; background: var(--surface); padding: 30px; border-radius: 16px; border: 1px solid var(--line); text-align: center; }
 #auth-screen input { width: 100%; padding: 10px; margin: 15px 0; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; }
 #auth-screen button { background: var(--a-s); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; }
@@ -41,37 +89,95 @@ h1, h2, h3 { font-family: var(--hf); margin: 0; }
 </head>
 <body>
 
-<!-- Pantalla de Bloqueo por Clave -->
+<!-- Pantalla de Contraseña -->
 <div id="auth-screen">
   <h2>Acceso Privado</h2>
-  <p style="color:var(--mut); font-size:14px; margin-top:8px;">Ingresa tu contraseña para ver la pauta de 30 días.</p>
+  <p style="color:var(--mut); font-size:14px; margin-top:8px;">Ingresa tu contraseña para ver la pauta.</p>
   <input type="password" id="pass-input" placeholder="Contraseña">
   <button onclick="checkPassword()">Ingresar</button>
   <p id="error-msg" style="color:var(--c-s); font-size:13px; margin-top:10px; display:none;">Contraseña incorrecta</p>
 </div>
 
-<!-- Contenido Principal de los 30 Días -->
+<!-- Aplicación Principal -->
 <div id="main-app" class="wrap hidden">
 <header class="hero">
-  <p style="font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; opacity:.8; margin-bottom:8px;">Plan personal · 30 días</p>
+  <p class="eyebrow">Plan personal · 30 días</p>
   <h1>Pauta de alimentación</h1>
-  <p style="opacity:.8; margin:12px 0 0;">Cinco comidas al día con las porciones de tu guía.</p>
+  <p class="lead">Cinco comidas al día con las porciones de tu guía: 3 de proteína en el almuerzo y 2 en la cena.</p>
+  <nav>
+    <a href="#porciones">Porciones</a>
+    <a href="#q1">Días 1–10</a>
+    <a href="#q11">Días 11–20</a>
+    <a href="#q21">Días 21–30</a>
+    <a href="#recetas">Recetas</a>
+    <a href="#compras">Compras</a>
+  </nav>
 </header>
 
-<section>
-  <h2>Días 1 a 10</h2>
-  <div class="days" id="box-1"></div>
-  
-  <h2>Días 11 a 20</h2>
-  <div class="days" id="box-2"></div>
-  
-  <h2>Días 21 a 30</h2>
-  <div class="days" id="box-3"></div>
+<section id="porciones">
+  <h2>Porciones diarias</h2>
+  <p class="sub">Lo que debe sumar cada comida según tu guía nutricional.</p>
+  <div class="portions">
+    <div class="meal d"><div class="ml"><span>Desayuno</span><small>7:00–9:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 2 proteínas + 1 lácteo descremado + 1 grasa</div></div></div>
+    <div class="meal k"><div class="ml"><span>Colación</span><small>10:30–12:00</small></div><div class="mb"><div class="mn">1 fruta</div></div></div>
+    <div class="meal a"><div class="ml"><span>Almuerzo</span><small>13:00–14:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 3 proteínas + 1 grasa + verduras libres</div></div></div>
+    <div class="meal o"><div class="ml"><span>Once</span><small>17:00–18:00</small></div><div class="mb"><div class="mn">1 lácteo descremado + 1 fruta + 1 carbohidrato</div></div></div>
+    <div class="meal c"><div class="ml"><span>Cena</span><small>19:00–20:00</small></div><div class="mb"><div class="mn">1 carbohidrato + 2 proteínas + 1 grasa + verduras libres</div></div></div>
+  </div>
+  <h3>Equivalencias de 1 porción</h3><p class="sub">Alimentos cocidos, salvo que se indique crudo.</p>
+  <div class="eqs">
+    <div class="eq c"><b>Proteínas</b><span>50 g pollo, pavo, lomo o carne 4%; 1 huevo o 3 claras; 60 g merluza/reineta; 55 g salmón; ½ atún (60 g); 45-50 g tofu</span></div>
+    <div class="eq a"><b>Legumbres</b><span>¾ taza (lentejas 150g, garbanzos 120g): 1 proteína + 1 carbohidrato</span></div>
+    <div class="eq d"><b>Carbohidratos</b><span>120 g arroz/pasta/cuscus; 130 g integral; 110 g quinoa; 120 g choclo; 150g papa; 100g camote; 2 pan molde; ½ marraqueta; 1 pita; ½ taza avena</span></div>
+    <div class="eq o"><b>Lácteos</b><span>1 vaso leche descremada (200ml); 1 yogurt descremado (140g); 90g quesillo light</span></div>
+    <div class="eq k"><b>Grasas</b><span>4 cditas aceite oliva; ½ palta (90g); 2 cdas mantequilla maní; 30g frutos secos</span></div>
+    <div class="eq k"><b>Verduras</b><span>Libres: varía los colores según tu tolerancia</span></div>
+  </div>
+</section>
+
+<!-- Menús y Días 1 a 30 -->
+<section id="q1"><h2>Menú días 1 a 10</h2><div class="days" id="d-box-1"></div></section>
+<section id="q11"><h2>Menú días 11 a 20</h2><div class="days" id="d-box-2"></div></section>
+<section id="q21"><h2>Menú días 21 a 30</h2><div class="days" id="d-box-3"></div></section>
+
+<!-- Recetas Completas -->
+<section id="recetas">
+  <h2>Recetas</h2><p class="sub">Todas para 1 persona. Toca el código de una comida para llegar a su receta.</p>
+  <div class="pbase"><b>P · Plato base</b><p>Combinan 1 proteína, 1 carbohidrato, verduras y 4 cditas de aceite de oliva. Pollo/pavo al horno 20-25 min a 200°C. Pescados 12-15 min. Carnes rojas o molida 3-8 min en sartén.</p></div>
+  <h3 class="rg d">Desayunos</h3>
+  <div class="recs">
+    <article class="rec d" id="r-D1"><h4><span class="code">D1</span>Tostadas con huevo revuelto y palta</h4><p class="por">1 carbohidrato · 2 proteínas · 1 lácteo · 1 grasa</p><p><b>Ingredientes</b> 2 rebanadas pan de molde (50g), 2 huevos, ½ palta (90g), 1 vaso leche descremada (200ml).</p><p><b>Preparación</b> Tuesta el pan. Bate y cocina los huevos a fuego bajo. Pisa la palta sobre el pan y acompaña con la leche.</p></article>
+    <article class="rec d" id="r-D2"><h4><span class="code">D2</span>Tostadas con pavo, huevo y tomate</h4><p class="por">1 carbohidrato · 2 proteínas · 1 lácteo · 1 grasa</p><p><b>Ingredientes</b> 2 rebanadas pan (50g), 3 láminas pavo (60g), 1 huevo, tomate, 4 cditas aceite oliva, 1 yogurt descremado.</p><p><b>Preparación</b> Cocina el huevo a la plancha. Tuesta el pan, añade tomate, aceite, pavo y huevo. Toma el yogurt aparte.</p></article>
+  </div>
+  <h3 class="rg o" style="margin-top:20px;">Once</h3>
+  <div class="recs">
+    <article class="rec o" id="r-O1"><h4><span class="code">O1</span>Yogurt con arándanos y avena</h4><p class="por">1 lácteo · 1 fruta · 1 carbohidrato</p><p><b>Ingredientes</b> 1 yogurt descremado sin azúcar, ½ taza arándanos (120g), ½ taza avena (30g).</p><p><b>Preparación</b> Mezcla el yogurt con la avena, deja reposar 5 min y añade los arándanos arriba.</p></article>
+  </div>
+  <h3 class="rg a" style="margin-top:20px;">Almuerzos</h3>
+  <div class="recs">
+    <article class="rec a" id="r-R1"><h4><span class="code">R1</span>Bowl de quinoa y pollo a las hierbas</h4><p class="por">1 carbohidrato · 3 proteínas · 1 grasa</p><p><b>Ingredientes</b> 110g quinoa cocida, 150g pechuga pollo, 4 cditas aceite oliva, tomate cherry, espinaca.</p><p><b>Preparación</b> Saltea el pollo con hierbas. Mezcla la quinoa con la espinaca, agrega el pollo y alíña con el aceite.</p></article>
+  </div>
+</section>
+
+<!-- Lista de Compras -->
+<section id="compras" style="margin-top:40px;">
+  <h2>Lista de compras semanal</h2><p class="sub">Cantidades aproximadas para una semana promedio.</p>
+  <div class="shop">
+    <div class="sh"><b>Huevos</b><span>12 a 14 unidades</span></div>
+    <div class="sh"><b>Pollo y Pavo (crudo)</b><span>800 a 900 g</span></div>
+    <div class="sh"><b>Pescados (merluza, salmón, reineta)</b><span>600 a 700 g</span></div>
+    <div class="sh"><b>Atún al agua</b><span>2 latas</span></div>
+    <div class="sh"><b>Vacuno magro y carne molida 4%</b><span>400 g en total</span></div>
+    <div class="sh"><b>Tofu firme</b><span>300 a 350 g</span></div>
+    <div class="sh"><b>Lácteos y Quesillo</b><span>Leche, yogurts y quesillo light</span></div>
+    <div class="sh"><b>Verduras y Frutas</b><span>Variadas según tu tolerancia</span></div>
+    <div class="sh"><b>Cereales y Panes</b><span>Arroz, quinoa, avena, pan de molde y pita</span></div>
+  </div>
 </section>
 </div>
 
 <script>
-const CLAVE_SECRETA = "RiaS2601"; // Puedes cambiar "1234" por tu contraseña deseada
+const CLAVE_SECRETA = "RiaS#2601; // Puedes cambiar la contraseña aquí
 
 function checkPassword() {
   const val = document.getElementById('pass-input').value;
@@ -89,29 +195,65 @@ if(sessionStorage.getItem('auth_pauta') === 'true') {
   document.getElementById('main-app').classList.remove('hidden');
 }
 
+// Generador de los 30 días con autoguardado en LocalStorage
 const K = 'pauta30-progress';
 let saved = JSON.parse(localStorage.getItem(K) || '{}');
 
-for(let i=1; i<=30; i++) {
+const menuData = [
+  {d:1, ds:"Tostadas con huevo y palta", c1:"Manzana", al:"Bowl de quinoa y pollo R1", on:"Yogurt con arándanos O1", cn:"Ensalada de choclo y atún C1"},
+  {d:2, ds:"Tostadas con pavo y tomate", c1:"2 Kiwis", al:"Lentejas con carne molida", on:"Tostadas con quesillo", cn:"Pollo salteado con puré"},
+  {d:3, ds:"Avena con huevo y frutos secos", c1:"Naranja", al:"Reineta con puré (P)", on:"Quesillo y marraqueta", cn:"Omelet de champiñón"},
+  {d:4, ds:"Quesadilla de maíz con huevo", c1:"Pera", al:"Lomo liso con camote", on:"Leche cultivada y uvas", cn:"Merluza con arroz"},
+  {d:5, ds:"Marraqueta con huevos", c1:"Pera", al:"Vacuno con cus cus (P)", on:"Leche con durazno", cn:"Wok de tofu"},
+  {d:6, ds:"Tofu revuelto con pan", c1:"Frutillas", al:"Garbanzos y atún", on:"Yogurt con cereal", cn:"Tacos de pavo molido"},
+  {d:7, ds:"Tostadas con pavo y huevo", c1:"Mandarinas", al:"Cerdo con papas (P)", on:"Leche con melón", cn:"Garbanzos y huevo"},
+  {d:8, ds:"Pan pita con huevo y pavo", c1:"Uvas", al:"Pavo asado con cus cus", on:"Yogurt con arándanos", cn:"Salmón con camote"},
+  {d:9, ds:"Pita con huevos y palta", c1:"Melón", al:"Pollo con arroz (P)", on:"Leche con manzana", cn:"Crema de zapallo y pollo"},
+  {d:10, ds:"Tostadas con pavo y tomate", c1:"Ciruelas", al:"Salteado de tofu con arroz", on:"Yogurt con granola", cn:"Tortilla de papa"},
+  {d:11, ds:"Pan con huevos y queso", c1:"Piña", al:"Vacuno con cus cus (P)", on:"Leche con frambuesas", cn:"Merluza con arroz"},
+  {d:12, ds:"Quesadilla de maíz", c1:"Papaya", al:"Lentejas con carne molida", on:"Batido plátano y avena", cn:"Wok de tofu"},
+  {d:13, ds:"Marraqueta con huevos", c1:"Arándanos", al:"Reineta con arroz (P)", on:"Leche con melón", cn:"Tacos de pavo molido"},
+  {d:14, ds:"Tofu revuelto", c1:"Cerezas", al:"Lomo liso con camote", on:"Pita con queso fresco", cn:"Garbanzos y huevo"},
+  {d:15, ds:"Avena con tofu", c1:"Plátano", al:"Bowl de quinoa y pollo R1", on:"Leche con pera", cn:"Salmón con camote"},
+  {d:16, ds:"Pan pita con pavo", c1:"Manzana", al:"Garbanzos y atún", on:"Tostadas con quesillo", cn:"Crema de zapallo y pollo"},
+  {d:17, ds:"Galletas con tofu", c1:"Kiwis", al:"Merluza con quinoa (P)", on:"Leche con durazno", cn:"Tortilla de papa"},
+  {d:18, ds:"Tostadas con pavo", c1:"Naranja", al:"Pavo asado con cus cus", on:"Leche cultivada y uvas", cn:"Ensalada de choclo y atún"},
+  {d:19, ds:"Avena con huevo", c1:"Pera", al:"Salmón con cus cus (P)", on:"Leche con naranja", cn:"Pollo salteado con puré"},
+  {d:20, ds:"Quesadilla de maíz", c1:"Durazno", al:"Salteado de tofu con arroz", on:"Yogurt con cereal", cn:"Omelet de champiñón"},
+  {d:21, ds:"Galletas con pavo y huevo", c1:"Frutillas", al:"Vacuno molido con arroz", on:"Leche con melón", cn:"Garbanzos y huevo"},
+  {d:22, ds:"Tofu revuelto", c1:"Mandarinas", al:"Lentejas con carne molida", on:"Yogurt con arándanos", cn:"Salmón con camote"},
+  {d:23, ds:"Galletas con tofu", c1:"Uvas", al:"Camarones y jurel con quinoa", on:"Leche con durazno", cn:"Crema de zapallo y pollo"},
+  {d:24, ds:"Pan pita con pavo", c1:"Melón", al:"Lomo liso con camote", on:"Yogurt con granola", cn:"Tortilla de papa"},
+  {d:25, ds:"Avena con huevo y yogurt", c1:"Ciruelas", al:"Atún y huevo con camote", on:"Leche con frambuesas", cn:"Omelet de champiñón"},
+  {d:26, ds:"Tostadas con pavo", c1:"Piña", al:"Garbanzos y atún", on:"Batido plátano y avena", cn:"Pollo salteado con puré"},
+  {d:27, ds:"Galletas con huevos", c1:"Papaya", al:"Vacuno con arroz (P)", on:"Leche con manzana", cn:"Ensalada de choclo y atún"},
+  {d:28, ds:"Quesadilla de maíz", c1:"Arándanos", al:"Pavo asado con cus cus", on:"Pita con queso fresco", cn:"Merluza con arroz"},
+  {d:29, ds:"Avena con huevos y palta", c1:"Cerezas", al:"Reineta con quinoa (P)", on:"Leche con durazno", cn:"Wok de tofu"},
+  {d:30, ds:"Tofu revuelto", c1:"Plátano", al:"Salteado de tofu con arroz", on:"Tostadas con quesillo", cn:"Tacos de pavo molido"}
+];
+
+menuData.forEach(item => {
   const art = document.createElement('article');
-  art.className = `day ${saved[i] ? 'done' : ''}`;
+  art.className = `day ${saved[item.d] ? 'done' : ''}`;
   art.innerHTML = `
-    <header><h3>Día ${i}</h3><label class="chk"><input type="checkbox" ${saved[i]?'checked':''} data-d="${i}"><span>Cumplido</span></label></header>
-    <div class="meal d"><div class="ml"><span>Desayuno</span></div><div class="mb">1 carbohidrato + 2 proteínas + 1 lácteo + 1 grasa</div></div>
-    <div class="meal a"><div class="ml"><span>Almuerzo</span></div><div class="mb">1 carbohidrato + 3 proteínas + 1 grasa + verduras</div></div>
-    <div class="meal c"><div class="ml"><span>Cena</span></div><div class="mb">1 carbohidrato + 2 proteínas + 1 grasa + verduras</div></div>
+    <header><h3>Día ${item.d}</h3><label class="chk"><input type="checkbox" ${saved[item.d]?'checked':''} data-d="${item.d}"><span>Cumplido</span></label></header>
+    <div class="meal d"><div class="ml"><span>Desayuno</span></div><div class="mb"><div class="mn">${item.ds}</div></div></div>
+    <div class="meal k"><div class="ml"><span>Colación</span></div><div class="mb"><div class="mn">${item.c1}</div></div></div>
+    <div class="meal a"><div class="ml"><span>Almuerzo</span></div><div class="mb"><div class="mn">${item.al}</div></div></div>
+    <div class="meal o"><div class="ml"><span>Once</span></div><div class="mb"><div class="mn">${item.on}</div></div></div>
+    <div class="meal c"><div class="ml"><span>Cena</span></div><div class="mb"><div class="mn">${item.cn}</div></div></div>
   `;
   const chk = art.querySelector('input');
   chk.addEventListener('change', (e) => {
     art.classList.toggle('done', e.target.checked);
-    saved[i] = e.target.checked;
+    saved[item.d] = e.target.checked;
     localStorage.setItem(K, JSON.stringify(saved));
   });
 
-  if(i <= 10) document.getElementById('box-1').appendChild(art);
-  else if(i <= 20) document.getElementById('box-2').appendChild(art);
-  else document.getElementById('box-3').appendChild(art);
-}
+  if(item.d <= 10) document.getElementById('d-box-1').appendChild(art);
+  else if(item.d <= 20) document.getElementById('d-box-2').appendChild(art);
+  else document.getElementById('d-box-3').appendChild(art);
+});
 </script>
 </body>
 </html>
